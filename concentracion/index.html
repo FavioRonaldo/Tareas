@@ -118,7 +118,7 @@
 												gameContainer.removeChild(firstTile);
 												gameContainer.removeChild(secondTile);
 												//amadir sonido aqui
-												onload();
+												
 												firstTile=null;
 												secondTile=null;
 												canPick=true;
@@ -129,14 +129,14 @@
 											document.getElementById("nombre").innerHTML = "Score=  "+puntos+" Quedan: "+totalFicha+" Nivel: "+nivel;
 											//var sound = PIXI.sound.utils.sineTone(523.251, 3);
 											//	sound.play();
-											window.onload=function(){
+											
 									 
 											var audioElement = document.createElement('audio');
  
 											// indicamos el archivo de audio a cargar
 											audioElement.setAttribute('src', 'sonido.mp3');
 									 		audioElement.setAttribute('autoplay', 'autoplay');
-										}
+										
 										if(totalFicha==0){
 											
  												 alert("Ganaste!! pasar siguiente nivel");
