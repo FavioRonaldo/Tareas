@@ -12,6 +12,13 @@
 	</head>
 	<body>
 		<script>
+			var nivel=1;
+			var tamañoA=4;
+			var tamañoB=4;
+			var dimensionesA=720;
+			var dimensionesB=780;
+			var totalFicha=tamañoA*tamañoB;
+			var puntos=0;
 			// first tile picked up by the player
 			var firstTile=null;
 			// second tile picked up by the player
@@ -46,9 +53,9 @@
 					}			
 				}
 				// shuffle the chosen tiles
-				for(i=0;i<96;i++){
-					var from = Math.floor(Math.random()*48);
-					var to = Math.floor(Math.random()*48);
+				for(i=0;i<(tamañoA*tamañoB)*2;i++){
+					var from = Math.floor(Math.random()*(tamañoA*tamañoB));
+					var to = Math.floor(Math.random()*(tamañoA*tamañoB));
 					var tmp = chosenTiles[from];
 					chosenTiles[from]=chosenTiles[to];
 					chosenTiles[to]=tmp;
@@ -104,6 +111,18 @@
 												secondTile=null;
 												canPick=true;
 											},1000);
+											puntos=puntos+20;
+											totalFicha=totalFicha-2;
+											document.getElementById("nombre").innerHTML = "Score=  "+puntos+" Quedan: "+totalFicha+" Nivel: "+nivel;
+											var audioElement = document.createElement('audio');
+ 
+											// indicamos el archivo de audio a cargar
+											audioElement.setAttribute('src', 'sonido.mp3');
+									 		audioElement.setAttribute('autoplay', 'autoplay');
+											if(totalFicha==0){
+											alert("Ganaste!! pasar siguiente nivel");
+											}
+										
 										}
 										// we picked different tiles
 										else{
@@ -119,6 +138,8 @@
 												secondTile=null;
 												canPick=true	
 								 			},1000);
+											puntos=puntos-2;
+								 			document.getElementById("nombre").innerHTML = "Score=  "+puntos+" Quedan: "+totalFicha+" Nivel: "+nivel;
 										}
 									}	
 								}
